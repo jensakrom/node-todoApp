@@ -8,7 +8,7 @@ router.get('/', todoController.todo_get_all);
 // post todo
 router.post('/', todoController.todo_post);
 
-// post delete
-router.post('/:item', todoController.todo_delete);
+// delete todo
+router.delete('/:item', todoController.todo_delete);
 
 module.exports = router;

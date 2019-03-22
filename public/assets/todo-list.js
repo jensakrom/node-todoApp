@@ -23,7 +23,8 @@ $(document).ready(function(){
       let item = $(this).text().replace(/ /g, "-");
       $.ajax({
         type: 'DELETE',
-        url: '/todo/' + item,
+        url: 'todo/' + item,
+        data:item,
         success: function(data){
           //do something with the data via front-end framework
           location.reload();

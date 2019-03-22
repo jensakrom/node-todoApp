@@ -4,23 +4,19 @@ const hostname = '127.0.0.1';
 const db = require('./database/db');
 const app = express();
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const todoRoutes = require('./route/todoRoute');
 
 
-// const urlencodedParser = bodyParser.urlencoded({ extended: false });
-
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
 // set up template engine
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
+app.use(morgan('dev'));
 
-// fire controller
-// todoController(app);
 // Router
-
-
-
 app.use('/todo', todoRoutes);
 
 app.listen(port, hostname, () => {
