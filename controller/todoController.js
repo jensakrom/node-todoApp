@@ -1,7 +1,7 @@
 // const bodyParser = require('body-parser');
 const Todo = require('../model/todoModel');
 
-const todo_get_all = (req, res, next) => {
+exports.todo_get_all = (req, res, next) => {
     Todo.find({}, (err, data) => {
         if(err){
             throw err;
@@ -10,7 +10,7 @@ const todo_get_all = (req, res, next) => {
     });
 }
 
-const todo_post = (req, res, next) => {
+exports.todo_post = (req, res, next) => {
     Todo(req.body).save((err, data) => {
         if(err){
             throw err;
@@ -19,7 +19,7 @@ const todo_post = (req, res, next) => {
     });
 }
 
-const todo_delete = (req, res, next) => {
+exports.todo_delete = (req, res, next) => {
     Todo.find({item: req.params.item.replace(/\-/g, " ")}).deleteOne({item: req.params.item.replace(/\-/g, " ")},(err,data) => {
         if(err){
             throw err;
@@ -28,8 +28,8 @@ const todo_delete = (req, res, next) => {
     }); 
 }
 
-module.exports = {
-    todo_get_all: todo_get_all,
-    todo_post: todo_post, 
-    todo_delete: todo_delete
-}
+// module.exports = {
+//     todo_get_all: todo_get_all,
+//     todo_post: todo_post, 
+//     todo_delete: todo_delete
+// }
